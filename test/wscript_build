@@ -1,0 +1,8 @@
+#! /usr/bin/env python
+# encoding: utf-8
+
+bld.program(
+    features='cxx test',
+    source=['allocate_tests.cpp'] + bld.path.ant_glob('src/*.cpp'),
+    target='allocate_tests',
+    use=['allocate', 'gtest'])
