@@ -151,7 +151,7 @@ public:
     }
 
     /// destroy elements of initialized storage p
-    void destroy (pointer p)
+    void destroy(pointer p)
     {
         (void) p; // suppress unused param warning on msvc
         // destroy objects by calling their destructor
