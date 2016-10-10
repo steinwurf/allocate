@@ -23,15 +23,15 @@ namespace allocate
 ///
 /// The allocator may be used with a std::vector like this:
 ///
-/// std::vector<uint8_t, sak::aligned_allocator<uint8_t> > vector;
+/// std::vector<uint8_t, allocate::aligned_allocator<uint8_t> > vector;
 ///
-/// Defaults to 32bit alignment, the lowest common denominotor on the
+/// Defaults to 32 bit alignment, the lowest common denominator on the
 /// supported platforms.
 ///
 /// The allocator is based on the code example from:
 /// The C++ Standard Library - A Tutorial and Reference
 /// by Nicolai M. Josuttis, Addison-Wesley, 1999
-template<class T, uint32_t Alignment = 32>
+template<class ValueType, uint32_t Alignment = 32>
 class aligned_allocator
 {
 public:
@@ -42,19 +42,19 @@ public:
 public:
 
     /// Type definitions
-    typedef T        value_type;
-    typedef T*       pointer;
-    typedef const T* const_pointer;
-    typedef T&       reference;
-    typedef const T& const_reference;
-    typedef std::size_t    size_type;
-    typedef std::ptrdiff_t difference_type;
+    using value_type = ValueType;
+    using pointer = value_type*;
+    using const_pointer = const value_type*;
+    using reference = value_type&;
+    using const_reference = const value_type&;
+    using size_type = std::size_t;
+    using difference_type = std::ptrdiff_t;
 
     /// Rebind allocator to type U
     template <class U>
     struct rebind
     {
-        typedef aligned_allocator<U> other;
+        using other = aligned_allocator<U>;
     };
 
     /// @return address of values
@@ -92,7 +92,7 @@ public:
     /// @return maximum number of elements that can be allocated
     size_type max_size() const
     {
-        return std::numeric_limits<std::size_t>::max() / sizeof(T);
+        return std::numeric_limits<std::size_t>::max() / sizeof(value_type);
     }
 
     /// Allocate but don't initialize num elements of type T
@@ -114,7 +114,7 @@ public:
     pointer allocate(size_type num, const void* = 0)
     {
         uint32_t space_needed =
-            static_cast<uint32_t>(num * sizeof(T)) + Alignment;
+            static_cast<uint32_t>(num * sizeof(value_type)) + Alignment;
 
         uint8_t* old_ptr =
             reinterpret_cast<uint8_t*>(::operator new(space_needed));
@@ -153,9 +153,9 @@ public:
     /// destroy elements of initialized storage p
     void destroy(pointer p)
     {
-        (void) p; // suppress unused param warning on msvc
+        (void) p; // suppress unused parameter warning on msvc
         // destroy objects by calling their destructor
-        p->~T();
+        p->~value_type();
     }
 
     /// deallocate storage p of deleted elements
