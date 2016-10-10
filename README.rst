@@ -13,7 +13,7 @@ The allocator may be used with a std::vector like this::
 
     std::vector<uint8_t, allocate::aligned_allocator<uint8_t>> data;
 
-The allocator defaults to 32 bit alignment - the lowest common denominotor on
+The allocator defaults to 32 bit alignment - the lowest common denominator on
 the supported platforms.
 
 The allocator is based on the code example from:
