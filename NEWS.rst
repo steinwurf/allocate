@@ -10,8 +10,8 @@ Latest
 
 2.0.0
 -----
-* Major: Upgrade to waf-tools 3
-* Minor: Upgrade to gtest 3
+* Major: Upgrade to waf-tools 4
+* Minor: Upgrade to gtest 4
 
 1.0.0
 ------
