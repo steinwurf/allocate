@@ -7,7 +7,10 @@ every change, see the Git log.
 Latest
 ------
 * tbd
-* Major: Removed static library and created allocate_includes instead.
+
+3.0.0
+-----
+* Major: Removed static library and defined allocate_includes instead.
 
 2.0.0
 -----
