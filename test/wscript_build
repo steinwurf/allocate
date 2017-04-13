@@ -3,6 +3,6 @@
 
 bld.program(
     features='cxx test',
-    source=['allocate_tests.cpp'] + bld.path.ant_glob('src/*.cpp'),
+    source=bld.path.ant_glob('**/*.cpp'),
     target='allocate_tests',
-    use=['allocate', 'gtest'])
+    use=['allocate_includes', 'gtest'])

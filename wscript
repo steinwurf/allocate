@@ -12,7 +12,9 @@ def build(bld):
         'STEINWURF_ALLOCATE_VERSION="{}"'.format(
             VERSION))
 
-    bld.recurse('src/allocate')
+    bld(name='allocate_includes',
+        includes='./src',
+        export_includes='./src')
 
     if bld.is_toplevel():
 
