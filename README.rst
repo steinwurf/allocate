@@ -2,6 +2,9 @@
 allocate
 ========
 
+.. image:: https://travis-ci.org/steinwurf/allocate.svg?branch=master
+    :target: https://travis-ci.org/steinwurf/allocate
+    
 Allocate is a library containing an aligned allocator. The aligned allocator
 should provide memory allocation for STL containers which are aligned on a
 specific byte boundary.
