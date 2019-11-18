@@ -4,7 +4,7 @@ allocate
 
 .. image:: https://travis-ci.org/steinwurf/allocate.svg?branch=master
     :target: https://travis-ci.org/steinwurf/allocate
-    
+
 Allocate is a library containing an aligned allocator. The aligned allocator
 should provide memory allocation for STL containers which are aligned on a
 specific byte boundary.
@@ -27,3 +27,14 @@ Usage
 =====
 
 See unit tests for usage.
+
+Use as Dependency in CMake
+--------------------------
+
+To depend on this project when using the CMake build system, add the following
+in your CMake build script::
+
+   add_subdirectory("/path/to/allocate" allocate)
+   target_link_libraries(<my_target> steinwurf::allocate)
+
+Where ``<my_target>`` is replaced by your target.
